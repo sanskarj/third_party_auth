@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+ 
+<style>
+   .head{
+       text-align: center;
+   }
+   .first_row{
+       margin-top: 6rem;
+   }
+   .image-1{
+       height: 5rem;
+       width: 5rem;
+       margin-left: 115%;
+       margin-top: 3rem;
+   }
+   .button-1{
+       width: 100%;
+       margin-left: 33rem;
+
+   }
+   .heading{
+       display: none;
+   }
+  .deleteform{
+      margin-top: 4rem;
+  }
+  .updateform{
+      margin-top: 4rem;
+  }
+</style>
+</head>
+<body>
+
+    <div class="container">
+
+        
+        <div class="row first_row justify-content-center">
+            <div class="col-md-12">
+                    <h2 class="text-primary head">Registration Successfull !!</h2>
+            </div>
+
+        </div>
+        <div class="row second_row">
+                <div class="col-md-5">
+                        <img src="https://previews.123rf.com/images/vertex4/vertex41501/vertex4150100116/34950617-3d-illustration-of-right-sign-in-green-color.jpg" alt="" class="image-1">
+                </div>
+    
+            </div>
+            
+       <form class="searchform" action="/registration/thanks/0/" method="get">
+         {% csrf_token %}
+            {% for field in form %}
+
+            <div class="form-group">
+            {{field.label_tag}}
+            {{field}}
+              </div>
+              {% endfor%}
+
+             <button class="btn btn-primary">Submit</button> 
+      
+       </form>
+       <form action="/registration/thanks/1/" class="deleteform" method="post">
+       {%csrf_token%}
+       {% for field in formdel%}
+       <div class="form-group">
+           {{field.label_tag}}
+           {{field}}
+
+       </div>
+       {%endfor%}    
+       <button class="btn btn-danger ">Delete</button>
+       </form>
+
+       <form action="/registration/thanks/2/" class="updateform" method="post">
+        {%csrf_token%}
+        {% for field in formupdate%}
+        <div class="form-group">
+            {{field.label_tag}}
+            {{field}}
+ 
+        </div>
+        {%endfor%}    
+        <button class="btn btn-danger ">Update</button>
+   
+    
+       
+         
+    </form>
+
+      
+        </div>
+    </div>
+</body>
+
+
