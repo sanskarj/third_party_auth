@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load socialaccount %}
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -129,8 +130,9 @@
                                 </h5>
                             </div>
                         </div>
+                    
                         <div class="row justify-content-center align-items-center button-row">
-                            <div class="col-9 button-col"><a href="" class="login-link google"> <span class="icon fa fa-google"></span> Google</a></div>
+                            <div class="col-9 button-col"><a href="{% provider_login_url 'google' %}" class="login-link google"> <span class="icon fa fa-google">  </span> Google</a></div>
                         </div>
                         <div class="row justify-content-center align-items-center button-row">
                             <div class="col-9"><a href="" class="login-link facebook"><span class="icon fa fa-facebook"></span>Facebook</a></div>

@@ -13,6 +13,8 @@ def frontpage(request):
 
 def index(request):
     msg = "Registration Portal"
+    
+
     if request.method=="POST":
         form  = regform(request.POST)
         if form.is_valid():
