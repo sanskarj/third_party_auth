@@ -8,7 +8,8 @@ from .models import Userinfo
 # Create your views here.
 
 from django.http import HttpResponse
-
+def frontpage(request):
+    return render(request,'registration/loginform.htm')
 
 def index(request):
     msg = "Registration Portal"
