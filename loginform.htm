@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+{% load socialaccount%}
+{% providers_media_js %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
+       
+        
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+      .heading-row{
+          height: 8rem;
+          font-family:cursive;
+
+      }
+      .heading-col{
+          text-align: center;
+          color: white !important;
+          padding: 1rem;
+          border-bottom: 1px solid white;
+      }
+      body{
+        background: #56ab2f;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #a8e063, #56ab2f);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        
+      }
+      .login-content-row{
+          background-color: white;
+          height: 35rem;
+          border-top-left-radius: 20%;
+          border-top-right-radius: 20%;
+          border-bottom-left-radius: 10%;
+          border-bottom-right-radius: 10%;
+          box-shadow: -7px 9px 11px -3px rgba(0,0,0,0.75);
+
+      }
+      
+      
+      .button-row{
+          margin-top: 2.3rem;
+          margin-bottom:2.3rem; 
+      }
+      .login-heading{
+          text-align: center;
+          text-transform: uppercase;
+          font-family: cursive;
+
+      }
+      .login-link{
+          display: block;
+          padding: 0.7rem;
+          background-color: green;
+          text-align: center;
+          font-family: cursive;
+          border-radius: 4rem 4rem 2rem 2rem;
+          color: white;
+          font-size: 1.2rem;
+          text-decoration: none;
+
+
+      }
+      .login-link:hover{
+          text-decoration: none;
+          color: white;
+          
+          animation-name: link-anim;
+          animation-duration: 1s;
+          animation-iteration-count: 1;
+      }
+      @keyframes link-anim{
+          0%{
+             
+              transform: translateY(0rem);
+          }
+          50%{
+              
+              transform: translateY(-0.3rem);
+          }
+          100%{
+              
+              transform: translateY(-0.6rem);
+
+          }
+      }
+      .facebook{
+          background-color: #3b5998;
+      }
+      .google{
+          background-color: #db3236	;
+
+      }
+      .twitter{
+          background-color: #00acee;
+      }
+      .linked{
+          background-color: #0e76a8;
+      }
+      .github{
+          background-color: #24292e;
+      }
+      .icon{
+          margin-right: 1.2rem;
+      }
+      
+  </style>
+    </head>
+    <body>
+        <div class="container">
+            
+                <div class="row heading-row justify-content-center align-items-center">
+                    <div class="col-8">
+                         <h2 class="heading-col text-primary">Welcome!! Please sign in to continue</h2>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-5 row align-items-center login-content-row">
+                        <div class="col-12 ">
+
+                        <div class="row justify-content-center align-items-centerr button-row">
+                            <div class="col-10">
+                                <h5 class="login-heading">
+                                    click on any link
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center align-items-center button-row">
+                            <div class="col-9 button-col"><a href="" class="login-link google"> <span class="icon fa fa-google"></span> Google</a></div>
+                        </div>
+                        <div class="row justify-content-center align-items-center button-row">
+                            <div class="col-9"><a href= "{% provider_login_url 'facebook' method="js_sdk" %}" class="login-link facebook"><span class="icon fa fa-facebook"></span>Facebook</a></div>
+                        </div>
+                        <!-- <div class="col-9"><a href="{% provider_login_url 'facebook' method="js_sdk" %}" class="login-link facebook"><span class="icon fa fa-facebook"></span>Facebook</a></div> -->
+                        <div class="row justify-content-center align-items-center button-row">
+                            <div class="col-9"><a href="" class="login-link twitter"><span class="icon fa fa-twitter"></span>Twitter</a></div>
+                        </div>
+                        <div class="row justify-content-center align-items-center button-row">
+                            <div class="col-9"><a href="" class="login-link linked"><span class="icon fa fa-linkedin"></span>LinkedIn</a></div>
+                        </div>
+                        <div class="row justify-content-center align-items-center button-row">
+                                <div class="col-9"><a href="" class="login-link github"><span class="icon fa fa-github"></span>Github</a></div>
+                            </div>
+                           
+                    </div>
+                    </div>
+                </div>
+              
+        </div>
+    </body>
+</html>
