@@ -10,14 +10,17 @@ from django.contrib.auth import logout
 
 from django.http import HttpResponse
 def frontpage(request):
-    logout(request)
+    
+    if request.user.is_authenticated:
+        return HttpResponseRedirect('/registration/0')
+    
     return render(request,'registration/loginform.htm')
 
-def index(request):
-    msg = "Registration Portal"
+def index(request,flag):
     
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/')
+    msg = "Welcome !! "+request.user.get_full_name()+" please let us know a little more about you"
     if request.method=="POST":
         form  = regform(request.POST)
         if form.is_valid():
@@ -25,6 +28,9 @@ def index(request):
             q = Userinfo(name=info['Name'],email=info['email'],age=info['age'],mobile=info['mobile'],password=info['password'])
             q.save()
             return HttpResponseRedirect('/registration/thanks/0') 
+    elif request.method =='GET' and flag=='1':
+        logout(request)
+        return HttpResponseRedirect('/')
     else:
         form = regform()
     return render(request,'registration/reg_form.html',{'form': form,'msg':msg,'flag':False,'id':0})
@@ -32,6 +38,7 @@ def index(request):
 def message(request,flag):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/')
+    
     form =  searchingform()
     formdel = deleteform() 
     formupdate = updateform()
@@ -62,6 +69,7 @@ def message(request,flag):
 def detailview(request,flag,idnumber):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/')
+    
     if flag=='0':
         try:
             p = Userinfo.objects.get(id=int(idnumber))

@@ -20,19 +20,30 @@
   body{
       background-color : white;
   }
+  .logout{
+    margin-top:2.5rem;
+  }
+  
   
 </style>
 </head>
 <body>
 <div class="container">
 
-   <div class="row"> 
-       <div class="col-md-12">
+   <div class="row first-row align-items-center"> 
+       <div class="col-md-10">
              <h2 class="text-primary main-head">{{ msg }}</h2>
        </div>
+       <form class="singout-button-form col-md-2 " action="/registration/1" method="get">
+       
+            <button class="logout btn btn-primary">
+                  Logout
+            </button>
+       
+       </form>
    </div>
 
-    <form class="reg_form" action='/registration/' method="post">
+    <form class="reg_form" action='/registration/0' method="post">
     {% csrf_token %}
 
     {% if form.subject.errors %}

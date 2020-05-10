@@ -50,7 +50,7 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend'
 ]
 SITE_ID =2
-LOGIN_REDIRECT_URL = '/registration'
+LOGIN_REDIRECT_URL = '/registration/0'
 SOCIALACCOUNT_PROVIDERS={
     'google' :{
         'SCOPE' :{
