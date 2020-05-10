@@ -3,18 +3,21 @@ from django.template import loader
 from django.http import HttpResponseRedirect
 from .forms import regform,searchingform,deleteform,updateform
 from .models import Userinfo
+from django.contrib.auth import logout
 
 
 # Create your views here.
 
 from django.http import HttpResponse
 def frontpage(request):
+    logout(request)
     return render(request,'registration/loginform.htm')
 
 def index(request):
     msg = "Registration Portal"
     
-
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/')
     if request.method=="POST":
         form  = regform(request.POST)
         if form.is_valid():
@@ -27,6 +30,8 @@ def index(request):
     return render(request,'registration/reg_form.html',{'form': form,'msg':msg,'flag':False,'id':0})
 
 def message(request,flag):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/')
     form =  searchingform()
     formdel = deleteform() 
     formupdate = updateform()
@@ -55,6 +60,8 @@ def message(request,flag):
     
     return render(request,'registration/thanks.htm',{'form':form,'formdel':formdel,'formupdate':formupdate})
 def detailview(request,flag,idnumber):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/')
     if flag=='0':
         try:
             p = Userinfo.objects.get(id=int(idnumber))
@@ -73,8 +80,12 @@ def detailview(request,flag,idnumber):
 
 
 def entiredata(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/')
     return render(request,'registration/database.htm',{'usercollection':Userinfo.objects.order_by('-id')})
 def updatedata(request,idnumber):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/')
     try:
         p = Userinfo.objects.get(id=int(idnumber))
         form = regform(initial={'Name':p.name,'email':p.email,'age':p.age,'mobile':p.mobile,'password':p.password})
