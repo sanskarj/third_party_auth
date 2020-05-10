@@ -44,13 +44,15 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.facebook'
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.github',
+    
 ]
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend'
 ]
-SITE_ID =2
+SITE_ID = 3
 LOGIN_REDIRECT_URL = '/registration/0'
 SOCIALACCOUNT_PROVIDERS={
     'google' :{
@@ -81,7 +83,14 @@ SOCIALACCOUNT_PROVIDERS={
         'EXCHANGE_TOKEN': True,
         'LOCALE_FUNC': lambda request: 'kr_KR',
         'VERIFIED_EMAIL': False,
-        'VERSION': 'v2.4'}
+        'VERSION': 'v2.4'},
+    'github': {
+        'SCOPE': [
+            'user',
+            'repo',
+            'read:org',
+        ],
+    }
 }
 MIDDLEWARE = [
 
@@ -124,7 +133,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'students',
         'USER': 'root',
-        'PASSWORD': 'jain@123',
+        'PASSWORD': 'udbhav@123',
         'HOST': 'localhost',
         'PORT': '3306',
     }
